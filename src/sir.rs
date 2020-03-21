@@ -53,7 +53,7 @@ impl SirModel {
     pub fn plot(&self, savename: &str, pos_legend: (f64, f64)) {
         let time = self.save_t.len() - 1;
         let n = self.save_s[0] + self.save_i[0];
-        
+
         let mut fg = gnuplot::Figure::new();
         fg.axes2d()
             .points(self.save_t.iter(), self.save_s.iter(), &[gnuplot::PointSymbol('o'), gnuplot::Color("blue"), Caption("S (Susceptible)")])
@@ -89,10 +89,10 @@ impl SirModel {
         println!("              | Maryland state (1908-1917)                |        13.0");
         println!("rubella       | England & Wales (1979)                    |         6.0");
         println!("varicella     | United States (1913-1921, 1943)           |  9.0 - 10.0");
-        println!("diphteria     | United States (1913-1921, 1943)           |  4.0 -  6.0");
-        println!("scarlatina    | United States (1913-1921, 1943)           |  5.0 -  7.0");
-        println!("mumps         | United States (1913-1921, 1943)           |  4.0 -  7.0");
-        println!("poliomyelitis | United States (1913-1921, 1943)           |         6.0");
+        println!("diphteria     | United States (1910-1947)                 |  4.0 -  6.0");
+        println!("scarlatina    | United States (1910-1920)                 |  5.0 -  7.0");
+        println!("mumps         | United States (1912-1916, 1943)           |  4.0 -  7.0");
+        println!("poliomyelitis | Netherlands(1960) & United States (1955)  |         6.0");
         println!("=======================================================================");
         println!("                                                             May (1983)")
     }
