@@ -28,7 +28,7 @@ fn run(save_name: &str, r_s: f64, r_e: f64, dr: f64, y_min: f64, y_max: f64) {
         .points(x.iter(), y.iter(), &[gnuplot::PointSymbol('.'), gnuplot::Color("blue")])
         .set_x_label("r", &[])
         .set_y_label("Stable Cycle", &[])
-        .set_title("test", &[])
+        .set_title("Bifurcation Diagram", &[])
         .set_x_range(Fix(r_s), Fix(r_e))
         .set_y_range(Fix(y_min), Fix(y_max));
     fg.echo_to_file(save_name);
