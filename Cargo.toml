@@ -17,3 +17,4 @@ ndarray-linalg = { git = "https://github.com/rust-ndarray/ndarray-linalg", branc
 num-complex = "0.2.4"
 eom = { git = "https://github.com/termoshtt/eom" }
 numerical = { git = "https://github.com/doraneko94/numerical" }
+num-traits = "^0.2"
