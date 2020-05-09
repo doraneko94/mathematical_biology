@@ -1,1 +1,2 @@
-pub mod sir;
+//pub mod de;
+pub mod infection;

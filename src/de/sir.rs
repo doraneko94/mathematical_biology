@@ -1,3 +1,4 @@
+/*
 use gnuplot::AxesCommon;
 use gnuplot::*;
 
@@ -95,5 +96,55 @@ impl SirModel {
         println!("poliomyelitis | Netherlands(1960) & United States (1955)  |         6.0");
         println!("=======================================================================");
         println!("                                                             May (1983)")
+    }
+}
+*/
+use eom::traits::*;
+use ndarray::*;
+
+#[derive(Clone, Copy, Debug)]
+pub struct Sir {
+    pub beta: f64,
+    pub b: f64,
+    pub gamma: f64,
+}
+
+impl Default for Sir {
+    fn default() -> Self {
+        Sir {
+            beta: 0.3,
+            b: 0.2,
+            gamma: 0.2,
+        }
+    }
+}
+
+impl ModelSpec for Sir {
+    type Scalar = f64;
+    type Dim = Ix1;
+    fn model_size(&self) -> usize {
+        3
+    }
+}
+
+impl Sir {
+    pub fn new(beta: f64, b: f64, gamma: f64) -> Self {
+        Sir { beta, b, gamma, }
+    }
+}
+
+impl Explicit for Sir {
+    fn rhs<'a, S>(&mut self, v: &'a mut ArrayBase<S, Ix1>) -> &'a mut ArrayBase<S, Ix1>
+    where
+        S: DataMut<Elem = f64>,
+    {
+        let s = v[0];
+        let i = v[1];
+        let r = v[2];
+        let n = s + i + r;
+        v[0] = s - self.beta * i * s / n + self.b * (i + r);
+        v[1] = i * (1.0 - self.gamma - self.b) + self.beta * i * s / n;
+        v[2] = n - v[0] - v[1];
+        v
     }
 }

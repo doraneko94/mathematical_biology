@@ -10,6 +10,7 @@ L = np.array([[   0.0,    0.0,    0.0,    0.0,  127.0,    4.0,   80.0],
               [   0.0,    0.0,    0.0,    0.0,    0.0, 0.8091, 0.8089]])
 
 l, V = np.linalg.eig(L)
+print(np.abs(l))
 l1 = np.abs(l).max()
 V1 = np.real(V[:, np.abs(l).argmax()])
 v1 = V1.sum()
